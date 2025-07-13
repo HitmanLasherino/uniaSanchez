@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Precios Uñas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Gestión de Precios de Servicios de Uñas</h1>
+    </header>
+
+    <main>
+        <nav class="tabs">
+            <button class="tab-button active" data-tab="insumos">Insumos</button>
+            <button class="tab-button" data-tab="servicios">Servicios</button>
+            <button class="tab-button" data-tab="calculadora">Calculadora</button>
+        </nav>
+
+        <section id="insumos" class="tab-content active">
+            <h2>Gestión de Insumos</h2>
+            <form id="insumoForm">
+                <label for="insumoNombre">Nombre del Insumo:</label>
+                <input type="text" id="insumoNombre" required>
+
+                <label for="insumoCostoUnitario">Costo Unitario ($):</label>
+                <input type="number" id="insumoCostoUnitario" step="0.01" required>
+
+                <label for="insumoUnidadMedida">Unidad de Medida:</label>
+                <input type="text" id="insumoUnidadMedida" placeholder="ej. ml, gramo, unidad" required>
+
+                <button type="submit">Agregar Insumo</button>
+            </form>
+
+            <h3>Insumos Guardados:</h3>
+            <ul id="listaInsumos">
+                </ul>
+        </section>
+
+        <section id="servicios" class="tab-content">
+            <h2>Gestión de Servicios</h2>
+            <form id="servicioForm">
+                <label for="servicioNombre">Nombre del Servicio:</label>
+                <input type="text" id="servicioNombre" required>
+
+                <label for="servicioTiempo">Tiempo del Servicio (minutos):</label>
+                <input type="number" id="servicioTiempo" step="1" required>
+
+                <label for="servicioCostoManoObra">Costo Mano de Obra ($/hora):</label>
+                <input type="number" id="servicioCostoManoObra" step="0.01" value="1500" required>
+
+                <label for="servicioMargenGanancia">Margen de Ganancia (%):</label>
+                <input type="number" id="servicioMargenGanancia" step="0.1" value="50" required>
+
+                <h3>Insumos Utilizados en este Servicio:</h3>
+                <div id="insumosServicioContainer">
+                    <div class="insumo-servicio-item">
+                        <label for="insumoSelect1">Insumo:</label>
+                        <select class="insumo-select" id="insumoSelect1">
+                            </select>
+                        <label for="cantidadInsumo1">Cantidad:</label>
+                        <input type="number" class="cantidad-insumo" id="cantidadInsumo1" step="0.01" value="0">
+                        <button type="button" class="remove-insumo">X</button>
+                    </div>
+                </div>
+                <button type="button" id="addInsumoToService">Añadir Otro Insumo</button>
+                <button type="submit">Guardar Servicio</button>
+            </form>
+
+            <h3>Servicios Guardados:</h3>
+            <ul id="listaServicios">
+                </ul>
+        </section>
+
+        <section id="calculadora" class="tab-content">
+            <h2>Calcular Precios</h2>
+            <label for="selectServicioCalc">Selecciona un Servicio:</label>
+            <select id="selectServicioCalc">
+                </select>
+            <button id="calcularPrecioBtn">Calcular Precio</button>
+
+            <div id="resultadoCalculo">
+                <h3>Detalle del Cálculo:</h3>
+                <p><strong>Costo Total de Insumos:</strong> <span id="costoInsumosCalc"></span></p>
+                <p><strong>Costo de Mano de Obra:</strong> <span id="costoManoObraCalc"></span></p>
+                <p><strong>Costo Total del Servicio:</strong> <span id="costoTotalServicioCalc"></span></p>
+                <p><strong>Precio Sugerido (con margen):</strong> <span id="precioSugeridoCalc"></span></p>
+                <p><strong>Precio Final de Venta:</strong> <span id="precioFinalCalc"></span></p>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
